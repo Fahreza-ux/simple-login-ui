@@ -1,11 +1,13 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+/* 1. Animasi Masuk (Fade In) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .login-container {
@@ -15,32 +17,28 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 400px;
+    
+    /* Terapkan animasi pada container */
+    animation: fadeIn 0.8s ease-out;
 }
 
-.login-form h2 {
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.input-group {
-    margin-bottom: 1.2rem;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
-}
-
+/* 2. Animasi Input Saat Fokus (Klik) */
 .input-group input {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box; /* Penting agar padding tidak merusak lebar */
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Transisi halus */
+    outline: none;
 }
 
+.input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* 3. Animasi Tombol Saat Hover & Klik */
 .btn-login {
     width: 100%;
     padding: 0.8rem;
@@ -50,8 +48,26 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease; /* Tambahkan transisi */
 }
 
 .btn-login:hover {
     background-color: #0056b3;
+}
+
+.btn-login:active {
+    transform: scale(0.98); /* Efek sedikit mengecil saat ditekan */
+}
+
+/* 4. Animasi Link Lupa Password */
+.footer-links a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #004085;
+    text-decoration: underline;
 }
